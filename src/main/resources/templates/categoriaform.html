@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Cadastro Categoria</title>
+<link rel="stylesheet" href="/css/categoriaform.css">
+</head>
+<body>	
+	<div class="container">
+		<div class="login">
+	  		<h2 class="login-header">Cadastrar/Atualizar Categoria</h2>
+	
+	  		<form class="login-container" th:action="@{/categoria/save}" th:object="${categoria}" method="post">
+			    <input type="hidden" th:field="*{id}">
+			    <p><input type="text" placeholder="nome" th:field="*{nome}"></p>
+			    <p><input type="submit" value="Salvar" class="button-a"></p>
+			    <p><a th:href="@{/categoria/list}">Voltar</a></p>
+	  		</form>
+		</div>
+	</div>
+</body>
+</html>

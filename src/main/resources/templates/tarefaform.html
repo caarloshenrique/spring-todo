@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Criando Tarefa...</title>
+<link rel="stylesheet" href="/css/tarefaform.css">
+</head>
+<body>	
+	<div class="login">
+  		<h2 class="login-header">Cadastrar/Atualizar Tarefa</h2>
+
+  		<form class="login-container" th:action="@{/tarefa/save}" th:object="${tarefa}" method="post">
+  			<p>Descrição: </p>
+  			<input type="hidden" th:field="*{id}">
+		    <p><input type="text" placeholder="descrição" th:field="*{descricao}"></p>
+		    <p>Data Limite: </p>
+		    <p><input type="date" th:field="*{dataLimite}"></p>
+		    <p>Data Lembrete: </p>
+		    <p><input type="date" th:field="*{dataLembrete}"></p>
+		    <p>Data Realização: </p>
+		    <p><input type="date" th:field="*{dataRealizacao}"></p>
+		    <p>Status: </p>
+		    <p><input type="text" placeholder="status (P|R)" maxlength="1" th:field="*{status}"></p>
+		    
+		    <p>Categoria: </p>
+		    <div class="custom-select">
+		    	<select th:field="*{categoria}" title="Selecione" required>
+		    		<option th:each="categoria : ${categorias}" th:text="${categoria.nome}"	th:value="${categoria.id}"></option>
+		    	</select>
+		    </div>
+		    
+		    <input type="hidden" th:field="*{usuario}" th:value="${usuario}" >
+		    <p><input type="submit" value="Salvar" class="button-a" style="cursor: pointer;"></p>
+		    <p><a th:href="@{/tarefa/list}">Voltar</a></p>
+  		</form>
+	</div>
+</body>
+</html>
+

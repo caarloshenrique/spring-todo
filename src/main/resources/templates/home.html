@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<link rel="stylesheet" href="/css/home.css">
+</head>
+<body>	
+	<div class="container">
+		<div class="login">
+	  		<h2 class="login-header">Home</h2>
+	
+	  		<form class="login-container" th:action="@{/usuario/save}" th:object="${usuario}" method="post">
+			     <p><a th:href="@{/usuario/perfil}">Perfil</a></p>
+  				<p><a th:href="@{/categoria/list}">Categorias</a></p>
+  				<p><a th:href="@{/tarefa/list}">Tarefas</a></p>
+  				<p><a th:href="@{/}">Sair</a></p>
+	  		</form>
+		</div>
+	</div>
+</body>
+</html>
+

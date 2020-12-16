@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Tarefas</title>
+<link rel="stylesheet" href="/css/tarefas.css">
+</head>
+<body>	
+  	<div class="container">	
+  		<h1>Lista de Tarefas</h1>
+  		
+  		<table>
+		  <thead>
+		    <tr>
+		      <th style="color:#ffffff" colspan="11">Tarefas</th>
+		    </tr>
+		    <tr>
+		      <th>Id</th>
+		      <th>Descrição</th>
+		      <th>Data Limite</th>
+		      <th>Data Lembrete</th>
+		      <th>Data Realização</th>
+		      <th>Status</th>
+		      <th>Categoria</th>
+		      <th>Usuário</th>
+		      <th>Finalizar</th>
+		      <th>Editar</th>
+		      <th>Excluir</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<tr th:if="${tarefa.status} =='P'" th:each="tarefa : ${lista}">
+				<td th:text="${tarefa.id}"></td>
+				<td th:text="${tarefa.descricao}"></td>
+				<td th:text="${tarefa.dataLimite}"></td>
+				<td th:text="${tarefa.dataLembrete}"></td>
+				<td th:text="${tarefa.dataRealizacao}"></td>
+				<td th:text="${tarefa.status}"></td>
+				<td th:text="${tarefa.categoria} != null ? ${tarefa.categoria.nome} : null"></td>
+				<td th:text="${tarefa.usuario}"></td>
+				<td>
+					<a th:if="${tarefa.status} =='P'" th:href="@{'/tarefa/update/status/' + ${tarefa.id}}">
+						<i class="material-icons button done">done</i>
+					</a>
+				</td>
+				<td>
+					<a th:if="${tarefa.status} =='P'" th:href="@{'/tarefa/update/' + ${tarefa.id}}">
+						<i class="material-icons button edit">edit</i>
+					</a>
+				</td>
+				<td>
+					<a th:if="${tarefa.status} =='P'" th:href="@{'/tarefa/delete/' + ${tarefa.id}}">
+						<i class="material-icons button delete">delete</i>
+					</a>
+				</td>
+			</tr>
+		  </tbody>
+		</table>
+  		<div>
+  			<a class="button-a" th:href="@{/novatarefa}">Nova Tarefa</a>
+  			<a class="button-a" th:href="@{/tarefasrealizadas}">Tarefa Realizadas</a>
+  			<a class="button-a" th:href="@{/home}">Voltar Home</a>
+  		</div>
+	</div>
+</body>
+</html>
+

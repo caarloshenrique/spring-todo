@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Autenticação</title>
+<link rel="stylesheet" href="/css/signin.css">
+</head>
+<body>
+	<div class="container">
+		<div class="login">
+	  		<h2 class="login-header">Autenticação</h2>
+	
+	  		<form class="login-container" th:action="@{/signin}" th:object="${usuario}" method="post">
+			    <p><input type="text" th:field="*{username}" placeholder="username"></p>
+			    <p><input type="password" th:field="*{password}" placeholder="senha"></p>
+			    <p><input type="submit" value="Entrar" class="button-a"></p>
+			    <p><a th:href="@{/signup}">Criar nova conta</a></p>
+	  		</form>
+		</div>
+	</div>	
+</body>
+</html>
+

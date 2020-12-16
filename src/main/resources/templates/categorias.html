@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Categorias</title>
+<link rel="stylesheet" href="/css/categorias.css">
+</head>
+<body>	
+ 	<div class="container">
+		
+		<h1>Lista de Categorias</h1>
+  			
+		<table>
+		  <thead>
+		    <tr>
+		      <th style="color:#ffffff" colspan="5">Categorias</th>
+		    </tr>
+		    <tr>
+		      <th>Id</th>
+		      <th>Nome</th>
+		      <th>Editar</th>
+		      <th>Excluir</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<tr th:each="categoria : ${lista}">
+				<td th:text="${categoria.id}"></td>
+				<td th:text="${categoria.nome}"></td>
+				<td>
+					<a th:href="@{'/categoria/update/' + ${categoria.id}}">
+						<i class="material-icons button edit">edit</i>
+					</a>
+				</td>
+				<td>
+					<a th:href="@{'/categoria/delete/' + ${categoria.id}}">
+						<i class="material-icons button delete">delete</i>
+					</a>
+				</td>
+			</tr>
+		  </tbody>
+		</table>
+	 	<div>
+			<a class="button-a" th:href="@{/novacategoria}">Nova Categoria</a>
+	 		<a class="button-a" th:href="@{/home}">Voltar Home</a>
+ 		</div>
+	</div>
+</body>
+</html>
+
